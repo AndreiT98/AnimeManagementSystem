@@ -9,6 +9,7 @@ package GUI.SignUp;
  * @author Andrei
  */
 import Logic.LoginController;
+import app.bolivia.swing.JCTextField;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingUtilities;
 
@@ -80,6 +81,7 @@ public class LogInPanel extends javax.swing.JPanel {
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 255));
 
+        userNameLabel.setBackground(new java.awt.Color(255, 255, 255));
         userNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userNameLabel.setText("Username");
 
@@ -212,6 +214,10 @@ public class LogInPanel extends javax.swing.JPanel {
     public void setActionCommand() {
         logInBttn.setActionCommand("Log In");
         signUpBttn.setActionCommand("Sign Up");
+    }
+    
+    public JCTextField getUser(){
+        return userTxt;
     }
 
 }

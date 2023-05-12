@@ -63,14 +63,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="GUI.SignUp.LogInPanel" name="logInPanel1">
+            <Component class="GUI.SignUp.LogInPanel" name="logInPanel">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card2"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="GUI.SignUp.SignUpPanel" name="signUpPanel1">
+            <Component class="GUI.SignUp.SignUpPanel" name="signUpPanel">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card3"/>

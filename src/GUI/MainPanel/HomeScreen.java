@@ -4,17 +4,25 @@
  */
 package GUI.MainPanel;
 
+import Logic.JikanDataRetriever;
+
 /**
  *
  * @author Andrei
  */
 public class HomeScreen extends javax.swing.JFrame {
+    
+    String user;
+    JikanDataRetriever retriever;
 
     /**
      * Creates new form HomeScreen
      */
     public HomeScreen() {
         initComponents();
+        retriever = new JikanDataRetriever();
+        totalAnimeCountLabel.setText(String.valueOf(retriever.countAnimeBySeason()));
+        currSeasonString.setText(retriever.getAnimeSeason());
     }
 
     /**
@@ -26,36 +34,249 @@ public class HomeScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        headerText = new javax.swing.JLabel();
+        cardPanel = new javax.swing.JPanel();
+        homePanel = new javax.swing.JPanel();
+        featuresPanel = new javax.swing.JPanel();
+        searchLabel = new javax.swing.JLabel();
+        seasonalLabel = new javax.swing.JLabel();
+        homeLabel = new javax.swing.JLabel();
+        logoutLabel = new javax.swing.JLabel();
+        watchlistLabel = new javax.swing.JLabel();
+        homeMainPanel = new javax.swing.JPanel();
+        totalAnimeLabel = new javax.swing.JLabel();
+        currSeasonLabel = new javax.swing.JLabel();
+        totalWatchlistLabel = new javax.swing.JLabel();
+        watchlistCountLabel = new javax.swing.JLabel();
+        currSeasonString = new javax.swing.JLabel();
+        totalAnimeCountLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1800, Short.MAX_VALUE)
+        headerPanel.setBackground(new java.awt.Color(102, 153, 255));
+
+        headerText.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        headerText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        headerText.setText("Anime Library");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(headerText)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        cardPanel.setLayout(new java.awt.CardLayout());
+
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        featuresPanel.setBackground(new java.awt.Color(51, 51, 51));
+
+        searchLabel.setBackground(new java.awt.Color(102, 102, 102));
+        searchLabel.setForeground(new java.awt.Color(255, 255, 255));
+        searchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/icons/icons8_Read_Online_26px.png"))); // NOI18N
+        searchLabel.setText("Search Anime");
+        searchLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        seasonalLabel.setBackground(new java.awt.Color(102, 102, 102));
+        seasonalLabel.setForeground(new java.awt.Color(255, 255, 255));
+        seasonalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        seasonalLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/icons/icons8_View_Details_26px.png"))); // NOI18N
+        seasonalLabel.setText("Seasonal Anime");
+        seasonalLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        homeLabel.setBackground(new java.awt.Color(102, 102, 102));
+        homeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        homeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        homeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/icons/home_24px.png"))); // NOI18N
+        homeLabel.setText("Home");
+        homeLabel.setOpaque(true);
+
+        logoutLabel.setBackground(new java.awt.Color(102, 102, 102));
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoutLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/icons/icons8_Exit_26px.png"))); // NOI18N
+        logoutLabel.setText("Logout");
+
+        watchlistLabel.setBackground(new java.awt.Color(102, 102, 102));
+        watchlistLabel.setForeground(new java.awt.Color(255, 255, 255));
+        watchlistLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        watchlistLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Images/icons/icons8_View_Details_26px.png"))); // NOI18N
+        watchlistLabel.setText("Watchlist      ");
+        watchlistLabel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        javax.swing.GroupLayout featuresPanelLayout = new javax.swing.GroupLayout(featuresPanel);
+        featuresPanel.setLayout(featuresPanelLayout);
+        featuresPanelLayout.setHorizontalGroup(
+            featuresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, featuresPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(featuresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(seasonalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addGroup(featuresPanelLayout.createSequentialGroup()
+                        .addGroup(featuresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(watchlistLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(homeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        featuresPanelLayout.setVerticalGroup(
+            featuresPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(featuresPanelLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(homeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
+                .addComponent(searchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(seasonalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(watchlistLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        homeMainPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        totalAnimeLabel.setBackground(new java.awt.Color(153, 153, 153));
+        totalAnimeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalAnimeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalAnimeLabel.setText("Total Anime this Season");
+        totalAnimeLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        totalAnimeLabel.setOpaque(true);
+
+        currSeasonLabel.setBackground(new java.awt.Color(153, 153, 153));
+        currSeasonLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        currSeasonLabel.setForeground(new java.awt.Color(255, 255, 255));
+        currSeasonLabel.setText("Current Season");
+        currSeasonLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        currSeasonLabel.setOpaque(true);
+
+        totalWatchlistLabel.setBackground(new java.awt.Color(153, 153, 153));
+        totalWatchlistLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalWatchlistLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalWatchlistLabel.setText("Total Anime in Watchlist");
+        totalWatchlistLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        totalWatchlistLabel.setOpaque(true);
+
+        watchlistCountLabel.setBackground(new java.awt.Color(153, 153, 153));
+        watchlistCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        watchlistCountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        watchlistCountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        watchlistCountLabel.setText("0");
+        watchlistCountLabel.setOpaque(true);
+
+        currSeasonString.setBackground(new java.awt.Color(153, 153, 153));
+        currSeasonString.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        currSeasonString.setForeground(new java.awt.Color(255, 255, 255));
+        currSeasonString.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        currSeasonString.setOpaque(true);
+
+        totalAnimeCountLabel.setBackground(new java.awt.Color(153, 153, 153));
+        totalAnimeCountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totalAnimeCountLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalAnimeCountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalAnimeCountLabel.setOpaque(true);
+
+        javax.swing.GroupLayout homeMainPanelLayout = new javax.swing.GroupLayout(homeMainPanel);
+        homeMainPanel.setLayout(homeMainPanelLayout);
+        homeMainPanelLayout.setHorizontalGroup(
+            homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeMainPanelLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(currSeasonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(currSeasonString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(homeMainPanelLayout.createSequentialGroup()
+                        .addGap(257, 257, 257)
+                        .addComponent(totalAnimeLabel)
+                        .addGap(257, 257, 257)
+                        .addComponent(totalWatchlistLabel)
+                        .addContainerGap(227, Short.MAX_VALUE))
+                    .addGroup(homeMainPanelLayout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(totalAnimeCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(watchlistCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(263, 263, 263))))
+        );
+        homeMainPanelLayout.setVerticalGroup(
+            homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homeMainPanelLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalAnimeLabel)
+                    .addComponent(totalWatchlistLabel)
+                    .addComponent(currSeasonLabel))
+                .addGap(27, 27, 27)
+                .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(homeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(watchlistCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(currSeasonString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(totalAnimeCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(homePanelLayout.createSequentialGroup()
+                .addComponent(featuresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(homeMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(featuresPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(homeMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        cardPanel.add(homePanel, "card2");
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1816, 1008));
+        setSize(new java.awt.Dimension(1616, 1008));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -95,6 +316,33 @@ public class HomeScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel cardPanel;
+    private javax.swing.JLabel currSeasonLabel;
+    private javax.swing.JLabel currSeasonString;
+    private javax.swing.JPanel featuresPanel;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel headerText;
+    private javax.swing.JLabel homeLabel;
+    private javax.swing.JPanel homeMainPanel;
+    private javax.swing.JPanel homePanel;
+    private javax.swing.JLabel logoutLabel;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JLabel seasonalLabel;
+    private javax.swing.JLabel totalAnimeCountLabel;
+    private javax.swing.JLabel totalAnimeLabel;
+    private javax.swing.JLabel totalWatchlistLabel;
+    private javax.swing.JLabel watchlistCountLabel;
+    private javax.swing.JLabel watchlistLabel;
     // End of variables declaration//GEN-END:variables
+    
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
 }
+

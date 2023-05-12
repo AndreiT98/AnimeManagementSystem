@@ -21,8 +21,8 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
      */
     public LogIn() {
         initComponents();
-        logInPanel1.setListener(this);
-        signUpPanel1.setListener(this);
+        logInPanel.setListener(this);
+        signUpPanel.setListener(this);
     }
 
     public void switchToPanel(String panelName) {
@@ -43,8 +43,8 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        logInPanel1 = new GUI.SignUp.LogInPanel();
-        signUpPanel1 = new GUI.SignUp.SignUpPanel();
+        logInPanel = new GUI.SignUp.LogInPanel();
+        signUpPanel = new GUI.SignUp.SignUpPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -62,8 +62,8 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.CardLayout());
-        jPanel4.add(logInPanel1, "card2");
-        jPanel4.add(signUpPanel1, "card3");
+        jPanel4.add(logInPanel, "card2");
+        jPanel4.add(signUpPanel, "card3");
 
         jPanel1.add(jPanel4);
 
@@ -114,8 +114,8 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private GUI.SignUp.LogInPanel logInPanel1;
-    private GUI.SignUp.SignUpPanel signUpPanel1;
+    private GUI.SignUp.LogInPanel logInPanel;
+    private GUI.SignUp.SignUpPanel signUpPanel;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -123,13 +123,13 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
         if (e.getActionCommand().equals("Sign Up")) {
             switchToPanel("card3");
         } else if (e.getActionCommand().equals("Log In")) {
-            if (logInPanel1.validateAccount()) {
+            if (logInPanel.validateAccount()) {
                 JOptionPane.showMessageDialog(this, "Log In successfull!");
-                dispose();
                 HomeScreen home = new GUI.MainPanel.HomeScreen();
+                home.setUser(logInPanel.getUser().getText());
                 home.setVisible(true);
-                
-                
+                dispose();
+
             }
 
         }
@@ -140,7 +140,7 @@ public class LogIn extends javax.swing.JFrame implements LogInPanel.signUpListen
         if (e.getActionCommand().equals("exit")) {
             switchToPanel("card2");
         } else if (e.getActionCommand().equals("register")) {
-            if (signUpPanel1.checkSignUp()) {
+            if (signUpPanel.checkSignUp()) {
                 JOptionPane.showMessageDialog(this, "Account created successfully!");
                 switchToPanel("card2");
             }
